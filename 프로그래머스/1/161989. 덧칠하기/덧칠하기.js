@@ -1,16 +1,11 @@
-function solution(n, m, section) {
-  const arr = Array.from(Array(n), (_, index) => index + 1);
-  
-  let paint = 0;
-
-  arr.forEach( (e, idx)=> {
-    if(section.includes(e)){
-      for(let i = 0 ; i < m ; i++){
-        arr[idx+i] = 0; 
-      }
-      paint++
+function solution(n, m, sections) {
+    var answer = 0;
+    var painted = 0;
+    for(var section of sections) {
+        if(painted < section) {
+            answer++;
+            painted = section+m-1;
+        }
     }
-  });
-
-  return paint;
+    return answer;
 }
